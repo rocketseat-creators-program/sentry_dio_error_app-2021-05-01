@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sentry_dio_error_app/pages/layout.dart';
-import 'package:sentry_dio_error_app/pages/users_page.dart';
+import 'package:sentry_dio_error_app/pages/users/users_page.dart';
 
 class HomePage extends StatefulWidget {
   static String tag = '/home';
@@ -28,12 +28,10 @@ class _HomePageState extends State<HomePage> {
           'Click below to see a list of users...',
           style: TextStyle(fontSize: Theme.of(context).textTheme.headline5!.fontSize),
         ),
-        FlatButton(
+        ElevatedButton(
           onPressed: () {
             Navigator.of(context).pushNamed(UsersPage.tag);
           },
-          color: Colors.blue,
-          textColor: Colors.white,
           child: Text('Users List'),
         )
       ],
