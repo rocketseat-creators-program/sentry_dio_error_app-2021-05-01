@@ -11,13 +11,15 @@ class UserRepository implements UserRepositoryInterface {
   Future<List<UserModel>> getList() async {
     final result = <UserModel>[];
     try {
-      final response = await _service.client.get<List<dynamic>>('/users');
+      final response = await _service.client.get('/users');
 
-      if (response.statusCode == HttpStatus.ok) {
-        result.clear();
-        for (var user in response.data!) {
-          result.add(UserModel.fromJson(user));
-        }
+      if (response.statusCode != HttpStatus.ok) {
+        throw 'Unexpected result code ${response.statusCode}';
+      }
+
+      result.clear();
+      for (var user in response.data!) {
+        result.add(UserModel.fromJson(user));
       }
     } catch (e, stack) {
       print([e, stack]);

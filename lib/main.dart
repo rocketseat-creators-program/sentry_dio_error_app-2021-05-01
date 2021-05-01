@@ -8,7 +8,9 @@ import 'package:sentry_dio_error_app/services/custom_navigator_observer.dart';
 Future<void> main() async {
   runZonedGuarded(() {
     runApp(MyApp());
-  }, (e, stack) {});
+  }, (e, stack) {
+    print(['Guarded Error', e]);
+  });
 }
 
 class MyApp extends StatelessWidget {

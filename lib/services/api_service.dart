@@ -42,6 +42,13 @@ class ApiService {
       },
       onError: (e, handler) {
         print([e, handler]);
+
+        return handler.resolve(Response(
+          requestOptions: e.requestOptions,
+          // data: e.response?.data,
+          statusCode: e.response?.statusCode,
+          statusMessage: e.response?.statusMessage,
+        ));
       },
     ));
     return _dio;

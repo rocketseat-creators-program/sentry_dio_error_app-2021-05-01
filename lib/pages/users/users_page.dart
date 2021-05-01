@@ -56,14 +56,16 @@ class _UsersPageState extends State<UsersPage> {
                     backgroundColor: Colors.purple,
                     child: Text(user.name!.characters.first),
                   ),
-                  title: Text(user.name!),
+                  title: Text('#${user.id} - ${user.name!}'),
                   subtitle: Text(user.nickname!),
                   onTap: () {
                     print('${user.name!}');
                   },
                 ),
                 onDismissed: (direction) {
-                  controller.deleteItem(user.id!);
+                  controller.deleteItem(user.id!).onError((error, stackTrace) {
+                    print([error, stackTrace]);
+                  });
                 },
               );
             },

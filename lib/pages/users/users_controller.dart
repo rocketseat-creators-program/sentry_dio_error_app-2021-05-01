@@ -10,12 +10,19 @@ class UsersController {
 
   Stream<List<UserModel>> get output => _controller.stream;
 
-  getUsersList() async {
+  Future<void> getUsersList() async {
+    // Fetch users list
     final list = await repository.getList();
+
+    // Add to the stream
     _controller.sink.add(list);
   }
 
-  deleteItem(int id) async {
+  Future<void> deleteItem(int id) async {
+    // if (id % 2 == 0) {
+    //   throw 'Forced users list error when user id is even';
+    // }
+
     final result = await repository.deleteById(id);
 
     if (result) {
