@@ -1,6 +1,7 @@
 # sentry_dio_error_app
 
-A new Flutter project.
+This is a Flutter project to help catch and treat errors 
+on your App.
 
 ## Getting Started
 

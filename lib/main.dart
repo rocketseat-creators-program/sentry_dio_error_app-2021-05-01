@@ -1,9 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:sentry_dio_error_app/pages/home_page.dart';
 import 'package:sentry_dio_error_app/pages/users/users_page.dart';
+import 'package:sentry_dio_error_app/services/custom_navigator_observer.dart';
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+  runZonedGuarded(() {
+    runApp(MyApp());
+  }, (e, stack) {});
 }
 
 class MyApp extends StatelessWidget {
@@ -19,6 +24,9 @@ class MyApp extends StatelessWidget {
       routes: {
         UsersPage.tag: (_) => UsersPage(),
       },
+      navigatorObservers: [
+        CustomNavigatorObserver(),
+      ],
     );
   }
 }
