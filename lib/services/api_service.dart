@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class ApiService {
   final Dio _dio = Dio();
@@ -41,7 +42,10 @@ class ApiService {
         return handler.next(response);
       },
       onError: (e, handler) {
-        print([e, handler]);
+        Sentry.captureMessage(
+          'Erro na API - ${e.response?.statusMessage} (${e.response?.statusCode})',
+          level: SentryLevel.warning,
+        );
 
         return handler.resolve(Response(
           requestOptions: e.requestOptions,

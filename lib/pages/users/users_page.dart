@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sentry_dio_error_app/model/user_model.dart';
 import 'package:sentry_dio_error_app/pages/layout.dart';
 import 'package:sentry_dio_error_app/pages/users/users_controller.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class UsersPage extends StatefulWidget {
   static String tag = '/users';
@@ -16,6 +17,9 @@ class _UsersPageState extends State<UsersPage> {
   @override
   void initState() {
     controller.getUsersList();
+
+    // myPersonalError();
+
     super.initState();
   }
 
@@ -23,6 +27,17 @@ class _UsersPageState extends State<UsersPage> {
   void dispose() {
     controller.dispose();
     super.dispose();
+  }
+
+  Future myPersonalError() async {
+    try {
+      throw 'My personal error';
+    } catch (exception, stackTrace) {
+      await Sentry.captureException(
+        exception,
+        stackTrace: stackTrace,
+      );
+    }
   }
 
   @override
@@ -65,6 +80,8 @@ class _UsersPageState extends State<UsersPage> {
                 onDismissed: (direction) {
                   controller.deleteItem(user.id!).onError((error, stackTrace) {
                     print([error, stackTrace]);
+
+                    Sentry.captureException(error, stackTrace: stackTrace);
                   });
                 },
               );

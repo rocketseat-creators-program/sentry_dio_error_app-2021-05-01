@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sentry_dio_error_app/pages/layout.dart';
 import 'package:sentry_dio_error_app/pages/users/users_page.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class HomePage extends StatefulWidget {
   static String tag = '/home';
@@ -10,6 +11,31 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    Sentry.configureScope((scope) {
+      scope.user = SentryUser(
+        id: '234',
+        username: 'Lorivaldo',
+      );
+    });
+
+    // myPersonalError();
+
+    super.initState();
+  }
+
+  Future myPersonalError() async {
+    try {
+      throw 'My personal error';
+    } catch (exception, stackTrace) {
+      await Sentry.captureException(
+        exception,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget content = Column(

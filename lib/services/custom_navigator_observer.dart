@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class CustomNavigatorObserver extends NavigatorObserver {
   @override
@@ -29,13 +30,13 @@ class CustomNavigatorObserver extends NavigatorObserver {
       category ?? 'no-category',
     ]);
 
-    // Sentry.configureScope((scope) {
-    //   scope.addBreadcrumb(Breadcrumb(
-    //     message: route.settings.name,
-    //     data: {"arguments": (route.settings.arguments as Map)?.keys?.toList()},
-    //     timestamp: DateTime.now(),
-    //     category: category,
-    //   ));
-    // });
+    Sentry.configureScope((scope) {
+      scope.addBreadcrumb(Breadcrumb(
+        message: route.settings.name,
+        // data: {"arguments": (route.settings.arguments as Map).keys.toList()},
+        timestamp: DateTime.now(),
+        category: category,
+      ));
+    });
   }
 }
