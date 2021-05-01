@@ -12,4 +12,4 @@ ferramenta online além de centralizar o tratamento de requests do Dio com Inter
 
 | [<img src="https://avatars.githubusercontent.com/u/2068045?v=4" width="75px;"/>](https://github.com/marcobraghim) |
 | :-: |
-|[Diego Fernandes](https://github.com/marcobraghim)|
+|[Marco A. Braghim](https://github.com/marcobraghim)|
