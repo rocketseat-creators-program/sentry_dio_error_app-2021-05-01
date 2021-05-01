@@ -1,17 +1,15 @@
-# sentry_dio_error_app
+<img src="https://storage.googleapis.com/golden-wind/experts-club/capa-github.svg" />
 
-This is a Flutter project to help catch and treat errors 
-on your App.
+# Captura e tratamento de erros com Sentry e Dio no Flutter
 
-## Getting Started
+Não existe sistema 100% livre de erros, eles vão acontecer mais cedo ou mais tarde e não há
+nada pior do que não ter a mínima ideia do porque este erro está acontecendo, não é mesmo?
 
-This project is a starting point for a Flutter application.
+Nesse vídeo vamos mostrar como tratar e capturar os erros do seu app no Flutter com uma
+ferramenta online além de centralizar o tratamento de requests do Dio com Interceptors.
 
-A few resources to get you started if this is your first Flutter project:
+## Expert
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| [<img src="https://avatars.githubusercontent.com/u/2068045?v=4" width="75px;"/>](https://github.com/marcobraghim) |
+| :-: |
+|[Diego Fernandes](https://github.com/marcobraghim)|
